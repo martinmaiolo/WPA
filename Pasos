@@ -1,0 +1,80 @@
+Pasos que se explican:
+Tutorial de Progressive Web Apps
+
+SSL
+Responsive
+
+Crear Iconos:
+https://www.favicon-generator.org/
+
+Colocarlas dentro del archivo index.html 
+
+Actualizar Rutas
+
+manifest.json
+
+"name": "Mi Restaurante",
+ "short_name": "Comida Online",
+ "lang": "es-ES",
+ "start_url": "/",
+ "background_color": "#2C3E50",
+ "theme_color": "#18BC9C",
+ "display": "standalone",
+
+Chequear en Chrome el manifest
+
+Crear Service
+http://www.pwabuilder.com/
+Offline copy of pages.
+
+Autoinstalable:
+
+var deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', function (e) {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  showAddToHomeScreen();
+});
+   
+
+function showAddToHomeScreen() {
+  var a2hsBtn = document.querySelector(".ad2hs-prompt");
+  a2hsBtn.style.display = "block";
+  a2hsBtn.addEventListener("click", addToHomeScreen);
+
+}
+
+*****************
+El prompt para agregar la App a la página de inicio saldrá si no lo has instalado ya.
+En caso de que no salga, asegúrate de que el Service Worker está fucnionando correctamente, para ello, revisa:
+En el archivo: pwabuilder-sw.js
+Línea 6:
+const offlineFallbackPage = "./index.html";
+Línea 16:
+if (offlineFallbackPage === "index.html") {
+
+Añade estos estilos en el HEAD en index.html:
+
+ .ad2hs-prompt {
+        background-color: rgb(59, 134, 196); /* Blue */
+        border: none;
+        display: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        position: absolute;
+        margin: 0 1rem 1rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: calc(100% - 32px);
+      }
+
+Al principio del BODY puedes poner un botón con dicho estilo:
+button type="button" class="ad2hs-prompt" Install Web App /button
+Se han eliminado los símbolos de apertura y cierre de etiqueta ya que Youtubeno los permite, pero recuerda ponerlos correctamente a la hora de definir este botón
