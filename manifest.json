@@ -1,0 +1,24 @@
+{
+  "short_name": "OM",
+  "name": "Online.Marketing",
+  "description": "Online.Marketing - The ultimate resource for conferences and tools.",
+  "icons": [
+    {
+      "src": "/static/img/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/img/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "scope": "/",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#f6f6f6",
+  "theme_color": "#e74c3c",
+  "splash_pages": null,
+  "lang": "en"
+}
